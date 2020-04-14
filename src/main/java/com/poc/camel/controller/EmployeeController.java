@@ -24,7 +24,11 @@ public class EmployeeController {
 
 	}
 
-	
+	@RequestMapping(value = "/employees", method = RequestMethod.GET)
+	public List<Employee> getAllEmployees() {
+		List<Employee> employees = producerTemplate.requestBody("direct:select", null, List.class);
+		return employees;
+
+	}
 
 }
-
